@@ -1,0 +1,13 @@
+version: '3'
+services:
+  yuzu:
+    tty: true
+    image: yuzu/emulator:latest
+    container_name: yuzu
+    volumes:
+      - "/tmp/.X11-unix/:/tmp/.X11-unix:rw"
+    environment:
+      - "DISPLAY=$DISPLAY"
+      - "QT_X11_NO_MITSHM=1"
+      - "XAUTHORITY=$XAUTH"
+    command: bash
