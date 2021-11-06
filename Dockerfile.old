@@ -1,0 +1,15 @@
+FROM ubuntu:18.04
+
+COPY . .
+
+RUN apt update && apt install -y sudo fuse software-properties-common 
+
+RUN sudo add-apt-repository ppa:ubuntu-x-swat/updates 
+RUN sudo apt-get -y dist-upgrade 
+#RUN sudo apt install -y --no-install-recommends ubuntu-desktop mesa-utils
+# cannot fine shared file errorは下で対応できるかもしれない
+#RUN apt-get install -y libgl1-mesa-dev libharfbuzz0b
+
+# qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+# export QT_DEBUG_PLUGINS=1でデバッグモードにすると中身が見える
+CMD ["bash"]

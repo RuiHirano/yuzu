@@ -6,9 +6,9 @@ services:
     container_name: yuzu
     privileged: true
     volumes:
-      - "/tmp/.X11-unix/:/tmp/.X11-unix:rw"
+      - "./:/workspace"
+      - "~/.Xauthority:/root/.Xauthority"
     environment:
       - "DISPLAY=$DISPLAY"
       - "QT_X11_NO_MITSHM=1"
-      - "XAUTHORITY=$XAUTH"
     command: bash
